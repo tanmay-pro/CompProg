@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "bit": "c",
+        "*.tcc": "c",
+        "bitset": "c",
+        "random": "c",
+        "valarray": "c",
+        "memory_resource": "c",
+        "limits": "c",
+        "regex": "c",
+        "algorithm": "c",
+        "complex": "c"
+    }
+}

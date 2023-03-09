@@ -1,0 +1,1 @@
+{"name":"Local: s1b","url":"/home/tanmay/Desktop/git/Codeforces-Solutions/edu/twoPointers/s1b.cpp","tests":[{"id":1657372135244,"input":"6 7\n1 6 9 13 18 18\n2 3 8 13 15 21 25\n","output":"1 1 2 3 4 6 6 \n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/tanmay/Desktop/git/Codeforces-Solutions/edu/twoPointers/s1b.cpp","group":"local","local":true}
