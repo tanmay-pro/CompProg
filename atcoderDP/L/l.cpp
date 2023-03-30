@@ -1,15 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-// code for implementing binary search
-/*lli l = -1, r = size;while (r > l + 1){ lli mid = l + (r - l) / 2; if (array[mid] <= val)l = mid;elser = mid;}*/
 #define ll long long
 #define PI 3.14159265
 #define br cout << endl
 #define fo(i, n) for (int i = 0; i < n; i++)
+#define Fo(i, k, n) for (int i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
 #define tr(container, it) \
     for (auto it = container.begin(); it != container.end(); it++)
-#define Fo(i, k, n) for (int i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
-#define amazing ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
+#define amazing ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL)
 #define ff first
 #define ss second
 #define pb push_back
@@ -27,8 +25,8 @@ typedef vector<vi> vvi;
 typedef vector<vl> vvl;
 typedef map<int, int> mii;
 typedef map<ll, ll> mll;
-
-int MOD = 1e9 + 7;
+ll MOD = 1e9 + 7;
+int p = 31;
 
 int main()
 {
@@ -36,22 +34,41 @@ int main()
     ll n;
     cin >> n;
     vl a(n);
+    ll dp[n][n+1];
     fo(i, n)
     {
-        cin >> a[i];
+    	cin >> a[i];
     }
-    vl dp(n, 1);
-
-    Fo(i, 1, n)
+    fo(i, n)
     {
-        fo(j, i)
-        {
-            if (a[j] < a[i])
-            {
-                dp[i] = max(dp[i], dp[j] + 1);
-            }
-        }
+    	fo(j, n+1)
+	    {
+    		dp[i][j] = 0;
+	    }
     }
-    cout << dp[n - 1] << endl;
+    fo(i, n)
+    {
+    	dp[i][1] = a[i];
+    }
+    Fo(j, 1, n+1)
+    {
+		fo(i, n)
+	    {
+			if(i + j - 1 <= n-1 && i+1 <= n-1)
+    		    dp[i][j] = max(a[i] - dp[i+1][j-1], a[i + j - 1] - dp[i][j-1]);
+	    }
+    }
+//    br;
+//	fo(i, n)
+//	{
+//    	fo(j, n+1)
+//	    {
+//    		cout << dp[i][j] << " ";
+//	    }
+//	    br;
+//	}
+//	br;
+	cout << dp[0][n];
+    br;
     return 0;
 }

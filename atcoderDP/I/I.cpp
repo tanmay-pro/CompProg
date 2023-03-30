@@ -1,15 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-// code for implementing binary search
-/*lli l = -1, r = size;while (r > l + 1){ lli mid = l + (r - l) / 2; if (array[mid] <= val)l = mid;elser = mid;}*/
 #define ll long long
 #define PI 3.14159265
 #define br cout << endl
 #define fo(i, n) for (int i = 0; i < n; i++)
+#define Fo(i, k, n) for (int i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
 #define tr(container, it) \
     for (auto it = container.begin(); it != container.end(); it++)
-#define Fo(i, k, n) for (int i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
-#define amazing ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
+#define amazing ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL)
 #define ff first
 #define ss second
 #define pb push_back
@@ -27,31 +25,50 @@ typedef vector<vi> vvi;
 typedef vector<vl> vvl;
 typedef map<int, int> mii;
 typedef map<ll, ll> mll;
-
-int MOD = 1e9 + 7;
+ll MOD = 1e9 + 7;
+int p = 31;
 
 int main()
 {
     amazing;
     ll n;
     cin >> n;
-    vl a(n);
+    vector<double> p(n);
     fo(i, n)
     {
-        cin >> a[i];
+    	cin >> p[i];
     }
-    vl dp(n, 1);
-
-    Fo(i, 1, n)
+    double dp[n+1][n+1];
+    fo(i, n+1)
     {
-        fo(j, i)
-        {
-            if (a[j] < a[i])
-            {
-                dp[i] = max(dp[i], dp[j] + 1);
-            }
-        }
+    	fo(j, n+1)
+	    {
+    		dp[i][j] = 0;
+	    }
     }
-    cout << dp[n - 1] << endl;
+    dp[1][0] = 1 - p[0];
+    dp[1][1] = p[0];
+    Fo(i, 2, n+1)
+    {
+    	fo(j, n+1)
+	    {
+		    if(j == 0)
+		    {
+			    dp[i][0] = dp[i-1][0]*(1 - p[i-1]);
+		    }
+		    else
+		    {
+			    dp[i][j] = dp[i-1][j]*(1 - p[i-1]) + dp[i-1][j-1]*p[i-1];
+		    }
+    	}
+    }
+    double sum = 0;
+    int x = n/2 + 1;
+    while(x != n+1)
+    {
+    	sum += dp[n][x];
+    	x++;
+    }
+	printf("%.10F\n", sum);
     return 0;
 }

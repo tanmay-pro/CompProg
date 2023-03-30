@@ -30,28 +30,37 @@ typedef map<ll, ll> mll;
 
 int MOD = 1e9 + 7;
 
+
 int main()
 {
     amazing;
-    ll n;
-    cin >> n;
-    vl a(n);
+    ll n, k;
+    cin >> n >> k;
+    vector<pair<ll, ll>> movies;
     fo(i, n)
     {
-        cin >> a[i];
+        ll x, y;
+        cin >> x >> y;
+        movies.push_back({y, x});
     }
-    vl dp(n, 1);
+    sort(movies.begin(), movies.end());
 
-    Fo(i, 1, n)
+    ll ans = 0;
+    multiset<ll> m;
+    fo(i, k)
+        m.insert(0);
+
+    fo(i, n)
     {
-        fo(j, i)
-        {
-            if (a[j] < a[i])
-            {
-                dp[i] = max(dp[i], dp[j] + 1);
-            }
-        }
+        auto elem = upper_bound(m.begin(), m.end(), movies[i].ss);
+        if(elem == begin(m))
+            continue;
+        m.erase(--elem);
+        m.insert(movies[i].ff);
+        ans++;
     }
-    cout << dp[n - 1] << endl;
+    cout << ans;
+    br;
+
     return 0;
 }

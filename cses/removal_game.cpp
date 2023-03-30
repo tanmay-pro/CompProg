@@ -36,7 +36,18 @@ int main()
     ll n;
     cin >> n;
     vl a(n);
-    fo(i, n) cin >> a[i];\
-    ll val1 =
+    fo(i, n) cin >> a[i];
+    vvl dp(n, vl(n, 0));
+    fo(i, n)
+    {
+        dp[0][i] = a[n - 1 - i];
+        dp[i][0] = max(dp[i][0], a[i]);
+    }
+    Fo(i, 1, n)
+    {
+        Fo(j, 1, n)
+        {
+        }
+    }
     return 0;
 }

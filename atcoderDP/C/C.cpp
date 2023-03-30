@@ -1,13 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
-// code for implementing binary search
-/*lli l = -1, r = size;while (r > l + 1){ lli mid = l + (r - l) / 2; if (array[mid] <= val)l = mid;elser = mid;}*/
 #define ll long long
 #define PI 3.14159265
 #define br cout << endl
 #define fo(i, n) for (int i = 0; i < n; i++)
-#define tr(container, it) \
-    for (auto it = container.begin(); it != container.end(); it++)
 #define Fo(i, k, n) for (int i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
 #define amazing ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
 #define ff first
@@ -27,31 +23,33 @@ typedef vector<vi> vvi;
 typedef vector<vl> vvl;
 typedef map<int, int> mii;
 typedef map<ll, ll> mll;
-
-int MOD = 1e9 + 7;
+int m = 1e9 + 7;
+int p = 31;
 
 int main()
 {
-    amazing;
     ll n;
     cin >> n;
-    vl a(n);
+    vl a, b, c;
     fo(i, n)
     {
-        cin >> a[i];
+        ll x, y, z;
+        cin >> x >> y >> z;
+        a.push_back(x);
+        b.push_back(y);
+        c.push_back(z);
     }
-    vl dp(n, 1);
-
-    Fo(i, 1, n)
+    ll dp[n][3];
+    dp[n - 1][0] = a[n - 1];
+    dp[n - 1][1] = b[n - 1];
+    dp[n - 1][2] = c[n - 1];
+    Fo(i, n - 2, -1)
     {
-        fo(j, i)
-        {
-            if (a[j] < a[i])
-            {
-                dp[i] = max(dp[i], dp[j] + 1);
-            }
-        }
+        dp[i][0] = a[i] + max(dp[i + 1][1], dp[i + 1][2]);
+        dp[i][1] = b[i] + max(dp[i + 1][0], dp[i + 1][2]);
+        dp[i][2] = c[i] + max(dp[i + 1][1], dp[i + 1][0]);
     }
-    cout << dp[n - 1] << endl;
+    cout << max(dp[0][0], max(dp[0][1], dp[0][2]));
+    br;
     return 0;
 }

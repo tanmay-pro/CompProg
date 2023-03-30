@@ -33,25 +33,13 @@ int MOD = 1e9 + 7;
 int main()
 {
     amazing;
-    ll n;
-    cin >> n;
-    vl a(n);
-    fo(i, n)
+    vector<string> board;
+    fo(i, 8)
     {
-        cin >> a[i];
+        string str;
+        cin >> str;
+        board.push_back(str);
     }
-    vl dp(n, 1);
-
-    Fo(i, 1, n)
-    {
-        fo(j, i)
-        {
-            if (a[j] < a[i])
-            {
-                dp[i] = max(dp[i], dp[j] + 1);
-            }
-        }
-    }
-    cout << dp[n - 1] << endl;
+    
     return 0;
 }
