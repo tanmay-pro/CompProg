@@ -36,18 +36,34 @@ int main()
     ll n;
     cin >> n;
     vl a(n);
-    fo(i, n) cin >> a[i];
+    fo(i, n)
+    {
+        cin >> a[i];
+    }
     vvl dp(n, vl(n, 0));
     fo(i, n)
     {
-        dp[0][i] = a[n - 1 - i];
-        dp[i][0] = max(dp[i][0], a[i]);
+        dp[i][i] = a[i];
     }
-    Fo(i, 1, n)
+    vl prefSum(n);
+    prefSum[0] = a[0];
+    fo(i, n)
     {
-        Fo(j, 1, n)
+        prefSum[i] = prefSum[i - 1] + a[i];
+    }
+    Fo(i, n - 1, -1)
+    {
+        fo(j, n)
         {
+            if (i >= j)
+                continue;
+            ll rightSum = prefSum[j] - prefSum[i];
+            ll leftSum = prefSum[j - 1] - prefSum[i - 1];
+            dp[i][j] = max({a[i] + rightSum - dp[i + 1][j], a[j] + leftSum - dp[i][j - 1]});
+            // break;
         }
     }
+    cout << dp[0][n - 1];
+    br;
     return 0;
 }

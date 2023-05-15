@@ -1,1 +1,0 @@
-{"name":"Local: b","url":"/home/tanmay/Desktop/git/Codeforces-Solutions/276/b.cpp","tests":[{"id":1665034434099,"input":"aba\n","output":"First\n"},{"id":1665034442662,"input":"abca\n","output":"Second\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/tanmay/Desktop/git/Codeforces-Solutions/276/b.cpp","group":"local","local":true}

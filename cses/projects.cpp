@@ -33,25 +33,14 @@ int MOD = 1e9 + 7;
 int main()
 {
     amazing;
-    ll n;
-    cin >> n;
-    vl a(n);
-    fo(i, n)
+    ll t;
+    cin >> t;
+    while (t--)
     {
-        cin >> a[i];
+        ll n;
+        cin >> n;
+        vl a(n);
+        fo(i, n) cin >> a[i];
     }
-    vl dp;
-
-    Fo(i, 0, n)
-    {
-        auto it = lower_bound(dp.begin(), dp.end(), a[i]);
-        if(it == dp.end())
-            dp.push_back(a[i]);
-            //  adding new elemenet because length increases
-        else
-            *it = a[i];
-            // assigning the smallest element greater than a[i] to be a[i]
-    }
-    cout << dp.size() << endl;
     return 0;
 }

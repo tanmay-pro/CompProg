@@ -36,22 +36,41 @@ int main()
     ll n;
     cin >> n;
     vl a(n);
+    fo(i, n) cin >> a[i];
+    map<ll, ll> dp;
     fo(i, n)
     {
-        cin >> a[i];
-    }
-    vl dp;
-
-    Fo(i, 0, n)
-    {
-        auto it = lower_bound(dp.begin(), dp.end(), a[i]);
-        if(it == dp.end())
-            dp.push_back(a[i]);
-            //  adding new elemenet because length increases
+        if (dp[a[i] - 1] > 0)
+        {
+            dp[a[i]] = dp[a[i] - 1] + 1;
+        }
         else
-            *it = a[i];
-            // assigning the smallest element greater than a[i] to be a[i]
+            dp[a[i]] = 1;
     }
-    cout << dp.size() << endl;
+    ll maxim = LONG_LONG_MIN;
+    ll elem = -1;
+    tr(dp, it)
+    {
+        if (it->second > maxim)
+        {
+            maxim = it->second;
+            elem = it->first;
+        }
+    }
+    cout << maxim;
+    br;
+    ll finding = elem;
+    vl arr;
+    Fo(i, n - 1, -1)
+    {
+        if (a[i] == finding)
+        {
+            arr.push_back(i + 1);
+            finding--;
+        }
+    }
+    sort(arr.begin(), arr.end());
+    fo(i, arr.size())
+        cout << arr[i] << " ";
     return 0;
 }

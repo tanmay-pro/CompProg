@@ -57,25 +57,4 @@ int main()
 	cout << array.size();
 	br;
 	return 0;
-	// vl input(n);
-	// vl heap;
-	// fo(i,n)
-	// {
-	// 	cin >>input[i];
-	// }
-	// fo(i, n)
-	// {
-	// 	ll x = input[i];
-	// 	auto it = upper_bound(heap.begin(), heap.end(), x);
-	// 	if(it == heap.end())
-	// 	{
-	// 		heap.push_back(x);
-	// 		continue;
-	// 	}
-	// 	int index = it - heap.begin();
-	// 	heap[index] = x;
-	// }
-	// cout << heap.size();
-	// br;
-	// return 0;
 }

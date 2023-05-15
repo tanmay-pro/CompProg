@@ -1,1 +1,0 @@
-{"name":"Local: increasing_subsequence","url":"/home/tanmay/Desktop/git/CompProg/cses/increasing_subsequence.cpp","tests":[{"id":1680010755132,"input":"8\n7 3 5 3 6 2 9 8","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/tanmay/Desktop/git/CompProg/cses/increasing_subsequence.cpp","group":"local","local":true}

@@ -32,26 +32,40 @@ int MOD = 1e9 + 7;
 
 int main()
 {
-    amazing;
-    ll n;
-    cin >> n;
-    vl a(n);
-    fo(i, n)
+    ll t = 1;
+    cin >> t;
+    while (t--)
     {
-        cin >> a[i];
-    }
-    vl dp;
+        vl a;
+        vl b;
+        ll n;
+        cin >> n;
+        fo(i, n)
+        {
+            ll x;
+            cin >> x;
+            a.push_back(x);
+        }
+        fo(i, n)
+        {
+            ll x;
+            cin >> x;
+            b.push_back(x);
+        }
 
-    Fo(i, 0, n)
-    {
-        auto it = lower_bound(dp.begin(), dp.end(), a[i]);
-        if(it == dp.end())
-            dp.push_back(a[i]);
-            //  adding new elemenet because length increases
-        else
-            *it = a[i];
-            // assigning the smallest element greater than a[i] to be a[i]
+        sort(a.begin(), a.end());
+        sort(b.begin(), b.end());
+
+        ll count = 1;
+
+        fo(i, n) 
+        {
+            int ind = lower_bound(b.begin(), b.end(), a[i]) - b.begin();
+            count = (count * (ind - i)) % MOD;
+        }
+        cout << count << endl;
     }
-    cout << dp.size() << endl;
+
     return 0;
 }
+

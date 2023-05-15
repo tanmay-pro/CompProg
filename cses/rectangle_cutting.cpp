@@ -33,25 +33,47 @@ int MOD = 1e9 + 7;
 int main()
 {
     amazing;
-    ll n;
-    cin >> n;
-    vl a(n);
-    fo(i, n)
+    ll a, b;
+    cin >> a >> b;
+    vvl dp(a + 1, vl(b + 1, LONG_LONG_MAX));
+    fo(i, a + 1)
     {
-        cin >> a[i];
+        dp[i][1] = i - 1;
     }
-    vl dp;
+    fo(i, b + 1)
+    {
+        dp[1][i] = i - 1;
+    }
+    dp[1][1] = 0;
+    Fo(i, 2, a + 1)
+    {
+        Fo(j, 2, b + 1)
+        {
+            //  need to calculate dp[i][j]
+            // cout << dp[1][2] << " ";
+            // br;
+            Fo(k, 1, i)
+            {
+                dp[i][j] = min(dp[i][j], dp[i - k][j] + dp[k][j] + 1);
+            }
+            Fo(k, 1, j)
+            {
+                dp[i][j] = min(dp[i][j], dp[i][j - k] + dp[i][k] + 1);
+            }
+            if (i == j)
+                dp[i][j] = 0;
+        }
+    }
+    cout << dp[a][b];
+    br;
+    // Fo(i, 1, a + 1)
+    // {
+    //     Fo(j, 1, b + 1)
+    //     {
+    //         cout << dp[i][j] << " ";
+    //     }
+    //     br;
+    // }
 
-    Fo(i, 0, n)
-    {
-        auto it = lower_bound(dp.begin(), dp.end(), a[i]);
-        if(it == dp.end())
-            dp.push_back(a[i]);
-            //  adding new elemenet because length increases
-        else
-            *it = a[i];
-            // assigning the smallest element greater than a[i] to be a[i]
-    }
-    cout << dp.size() << endl;
     return 0;
 }

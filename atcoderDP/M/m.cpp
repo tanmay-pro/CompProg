@@ -28,30 +28,46 @@ typedef vector<vl> vvl;
 typedef map<int, int> mii;
 typedef map<ll, ll> mll;
 
-int MOD = 1e9 + 7;
+int mod = 1e9 + 7;
 
 int main()
 {
     amazing;
-    ll n;
-    cin >> n;
+    ll n, k;
+    cin >> n >> k;
     vl a(n);
     fo(i, n)
     {
         cin >> a[i];
     }
-    vl dp;
-
-    Fo(i, 0, n)
+    vvl dp(n, vl(k + 1, 0));
+    fo(i, k + 1)
     {
-        auto it = lower_bound(dp.begin(), dp.end(), a[i]);
-        if(it == dp.end())
-            dp.push_back(a[i]);
-            //  adding new elemenet because length increases
+        ll currLim = a[0];
+        if (i <= currLim)
+            dp[0][i] = 1;
         else
-            *it = a[i];
-            // assigning the smallest element greater than a[i] to be a[i]
+            dp[0][i] = 0;
     }
-    cout << dp.size() << endl;
+    Fo(i, 1, n)
+    {
+        dp[i][0] = 1;
+        Fo(j, 1, k + 1)
+        {
+            dp[i][j] = dp[i][j - 1] + dp[i - 1][j];
+            if (j > a[i])
+                dp[i][j] += dp[i - 1][j - a[i]];
+            dp[i][j] %= mod;
+        }
+    }
+    fo(i, n)
+    {
+        fo(j, k + 1)
+        {
+            cout << dp[i][j] << " ";
+        }
+        br;
+    }
+
     return 0;
 }

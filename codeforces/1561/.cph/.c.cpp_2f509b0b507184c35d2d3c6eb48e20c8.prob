@@ -1,1 +1,0 @@
-{"name":"Local: c","url":"/home/tanmay/Desktop/git/Codeforces-Solutions/1561/c.cpp","tests":[{"id":1661857991396,"input":"2\n1\n1 42\n2\n3 10 15 8\n2 12 11","output":"43\n13"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/tanmay/Desktop/git/Codeforces-Solutions/1561/c.cpp","group":"local","local":true}

@@ -33,25 +33,47 @@ int MOD = 1e9 + 7;
 int main()
 {
     amazing;
-    ll n;
-    cin >> n;
-    vl a(n);
-    fo(i, n)
+    ll t;
+    cin >> t;
+    while (t--)
     {
-        cin >> a[i];
-    }
-    vl dp;
+        ll n;
+        cin >> n;
+        vl a(n);
+        fo(i, n) cin >> a[i];
+        
+        // if (a[0] == 1)
+        //     ans++;
+        // ll currSeq = 0;
+        // Fo(i, 1, n)
+        // {
+        //     if (a[i] == 1)
+        //         currSeq++;
+        //     else
+        //     {
+        //         ans += currSeq / 3;
+        //         currSeq = 0;
+        //     }
+        // }
+        // ans += currSeq / 3;
+        // cout << ans;
+        // br;
 
-    Fo(i, 0, n)
-    {
-        auto it = lower_bound(dp.begin(), dp.end(), a[i]);
-        if(it == dp.end())
-            dp.push_back(a[i]);
-            //  adding new elemenet because length increases
-        else
-            *it = a[i];
-            // assigning the smallest element greater than a[i] to be a[i]
+        vvl dp(2, vl(n + 1, LONG_LONG_MAX));
+        dp[1][0] = 0;
+        for (int j = 0; j < n; j++)
+        {
+            dp[0][j + 1] = min(dp[0][j + 1], dp[1][j] + a[j]);
+            dp[1][j + 1] = min(dp[1][j + 1], dp[0][j]);
+
+            if (j + 2 <= n)
+            {
+                dp[0][j + 2] = min(dp[0][j + 2], dp[1][j] + a[j + 1] + a[j]);
+                dp[1][j + 2] = min(dp[1][j + 2], dp[0][j]);
+            }
+        }
+        cout << min(dp[0][n], dp[1][n]);
+        br;
     }
-    cout << dp.size() << endl;
     return 0;
 }

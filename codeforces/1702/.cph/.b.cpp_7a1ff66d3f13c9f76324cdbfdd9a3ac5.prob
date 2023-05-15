@@ -1,1 +1,0 @@
-{"name":"Local: b","url":"/home/tanmay/Desktop/git/Codeforces-Solutions/1702/b.cpp","tests":[{"id":1657464406367,"input":"6\nlollipops\nstringology\nabracadabra\ncodeforces\ntest\nf\n","output":"2\n4\n3\n4\n1\n1\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/tanmay/Desktop/git/Codeforces-Solutions/1702/b.cpp","group":"local","local":true}
